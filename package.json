@@ -20,7 +20,7 @@
     "linter"
   ],
   "scripts": {
-    "lint": "eslint --ext js,md .",
+    "lint": "eslint --ext js,md,mjs .",
     "prepare": "node ./npm-prepare.js",
     "release:generate:latest": "eslint-generate-release",
     "release:generate:alpha": "eslint-generate-prerelease alpha",
