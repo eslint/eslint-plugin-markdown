@@ -115,7 +115,7 @@ describe("processor", () => {
                 "```js",
                 "backticks",
                 "```",
-                "~~~javascript",
+                "~~~js",
                 "tildes",
                 "~~~"
             ].join("\n");
@@ -124,7 +124,7 @@ describe("processor", () => {
             assert.strictEqual(blocks.length, 2);
             assert.strictEqual(blocks[0].filename, "0.js");
             assert.strictEqual(blocks[0].text, "backticks\n");
-            assert.strictEqual(blocks[1].filename, "1.javascript");
+            assert.strictEqual(blocks[1].filename, "1.js");
             assert.strictEqual(blocks[1].text, "tildes\n");
         });
 
@@ -255,7 +255,7 @@ describe("processor", () => {
             const blocks = processor.preprocess(code);
 
             assert.strictEqual(blocks.length, 1);
-            assert.strictEqual(blocks[0].filename, "0.javascript");
+            assert.strictEqual(blocks[0].filename, "0.js");
         });
 
         it("should find code fences with node info string", () => {
@@ -267,7 +267,7 @@ describe("processor", () => {
             const blocks = processor.preprocess(code);
 
             assert.strictEqual(blocks.length, 1);
-            assert.strictEqual(blocks[0].filename, "0.node");
+            assert.strictEqual(blocks[0].filename, "0.js");
         });
 
         it("should find code fences with jsx info string", () => {
@@ -321,6 +321,18 @@ describe("processor", () => {
         it("should ignore trailing whitespace in the info string", () => {
             const code = [
                 "```js    ",
+                "var answer = 6 * 7;",
+                "```"
+            ].join("\n");
+            const blocks = processor.preprocess(code);
+
+            assert.strictEqual(blocks.length, 1);
+            assert.strictEqual(blocks[0].filename, "0.js");
+        });
+
+        it("should the language to its file extension with leading whitespace and trailing characters", () => {
+            const code = [
+                "```   javascript  CUSTOM",
                 "var answer = 6 * 7;",
                 "```"
             ].join("\n");
@@ -408,7 +420,7 @@ describe("processor", () => {
                 "var answer = 6 * 7;",
                 "```",
                 "",
-                "```javascript",
+                "```js",
                 "console.log(answer);",
                 "```",
                 "",
@@ -419,7 +431,7 @@ describe("processor", () => {
             assert.strictEqual(blocks.length, 2);
             assert.strictEqual(blocks[0].filename, "0.js");
             assert.strictEqual(blocks[0].text, "var answer = 6 * 7;\n");
-            assert.strictEqual(blocks[1].filename, "1.javascript");
+            assert.strictEqual(blocks[1].filename, "1.js");
             assert.strictEqual(blocks[1].text, "console.log(answer);\n");
         });
 
