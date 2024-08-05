@@ -1,5 +1,19 @@
 # Changelog
 
+## [6.0.0](https://github.com/eslint/markdown/compare/v5.1.0...v6.0.0) (2024-08-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* Rename to @eslint/markdown ([#265](https://github.com/eslint/markdown/issues/265))
+* Convert to ESM ([#259](https://github.com/eslint/markdown/issues/259))
+
+### Features
+
+* Add type checking and type definitions ([#266](https://github.com/eslint/markdown/issues/266)) ([0503748](https://github.com/eslint/markdown/commit/0503748497e623842b8c78b140b766a086ee2ce7))
+* Convert to ESM ([#259](https://github.com/eslint/markdown/issues/259)) ([e0da221](https://github.com/eslint/markdown/commit/e0da2214cc06fd441def1844135f3c9fef74e940))
+* Rename to @eslint/markdown ([#265](https://github.com/eslint/markdown/issues/265)) ([e0b5457](https://github.com/eslint/markdown/commit/e0b545708c051e605b438f9cddde8dad3ec24c6e))
+
 ## [5.1.0](https://github.com/eslint/eslint-plugin-markdown/compare/v5.0.0...v5.1.0) (2024-07-05)
 
 
