@@ -34,20 +34,22 @@
     "linter"
   ],
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
+    "lint": "eslint . && eslint -c eslint.config-content.js .",
+    "lint:fix": "eslint --fix . && eslint --fix -c eslint.config-content.js .",
     "build:dedupe-types": "node tools/dedupe-types.js dist/esm/index.js",
-    "build": "rollup -c && npm run build:dedupe-types && tsc -p tsconfig.esm.json",
-    "prepare": "node ./npm-prepare.cjs",
+    "build:rules": "node tools/build-rules.js",
+    "build": "npm run build:rules && rollup -c && npm run build:dedupe-types && tsc -p tsconfig.esm.json",
+    "prepare": "node ./npm-prepare.cjs && npm run build",
     "test": "c8 mocha \"tests/**/*.test.js\" --timeout 30000"
   },
   "devDependencies": {
-    "@eslint/core": "^0.2.0",
+    "@eslint/core": "^0.3.0",
     "@eslint/js": "^9.4.0",
     "@types/eslint": "^9.6.0",
     "c8": "^10.1.2",
     "chai": "^5.1.1",
-    "eslint": "^9.4.0",
+    "dedent": "^1.5.3",
+    "eslint": "^9.8.0",
     "eslint-config-eslint": "^11.0.0",
     "globals": "^15.1.0",
     "mocha": "^10.6.0",
@@ -56,7 +58,9 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "mdast-util-from-markdown": "^2.0.1"
+    "mdast-util-from-markdown": "^2.0.1",
+    "mdast-util-gfm": "^3.0.0",
+    "micromark-extension-gfm": "^3.0.0"
   },
   "peerDependencies": {
     "eslint": ">=9"

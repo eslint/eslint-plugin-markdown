@@ -7,19 +7,30 @@ export default [
     ...eslintConfigESLint,
     eslintConfigESLintFormatting,
     {
+        name: "markdown/plugins",
         plugins: {
             markdown
         }
     },
     {
+        name: "markdown/ignores",
         ignores: [
             "**/examples",
             "**/coverage",
             "**/tests/fixtures",
-            "dist"
+            "dist",
+            "src/build/"
         ]
     },
     {
+        name: "markdown/tools",
+        files: ["tools/**/*.js"],
+        rules: {
+            "no-console": "off"
+        }
+    },
+    {
+        name: "markdown/tests",
         files: ["tests/**/*.js"],
         languageOptions: {
             globals: {
@@ -31,10 +42,12 @@ export default [
         }
     },
     {
+        name: "markdown/code-blocks",
         files: ["**/*.md"],
         processor: "markdown/markdown"
     },
     {
+        name: "markdown/code-blocks/js",
         files: ["**/*.md/*.js"],
         languageOptions: {
             sourceType: "module",

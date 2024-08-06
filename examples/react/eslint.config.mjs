@@ -6,7 +6,7 @@ import reactPlugin from "eslint-plugin-react";
 
 export default [
     js.configs.recommended,
-    ...markdown.configs.recommended,
+    ...markdown.configs.processor,
     reactPlugin.configs.flat.recommended,
     {
         settings: {

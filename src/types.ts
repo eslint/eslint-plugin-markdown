@@ -17,3 +17,5 @@ export interface BlockBase {
 export interface Block extends Node, BlockBase {}
 
 export type Message = Linter.LintMessage;
+
+export type RuleType = "problem" | "suggestion" | "layout";

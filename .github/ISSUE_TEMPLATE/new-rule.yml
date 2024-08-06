@@ -1,0 +1,41 @@
+name: "\U0001F680 Propose a new rule"
+description: "Propose a new rule to be added to the plugin"
+title: "New Rule: (fill in)"
+labels:
+    - rule
+    - feature
+body:
+    - type: markdown
+      attributes:
+          value: By opening an issue, you agree to abide by the [OpenJS Foundation Code of Conduct](https://eslint.org/conduct).
+    - type: input
+      attributes:
+          label: Rule details
+          description: What should the new rule do?
+      validations:
+          required: true
+    - type: dropdown
+      attributes:
+          label: What type of rule is this?
+          options:
+              - Warns about a potential problem
+              - Suggests an alternate way of doing something
+      validations:
+          required: true
+    - type: textarea
+      attributes:
+          label: Example code
+          description: Please provide some example code that this rule will warn about.
+          render: markdown
+      validations:
+          required: true
+    - type: checkboxes
+      attributes:
+          label: Participation
+          options:
+              - label: I am willing to submit a pull request to implement this rule.
+                required: false
+    - type: textarea
+      attributes:
+          label: Additional comments
+          description: Is there anything else that's important for the team to know?

@@ -4,7 +4,7 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
     js.configs.recommended,
-    ...markdown.configs.recommended,
+    ...markdown.configs.processor,
     ...tseslint.configs.recommended.map(config => ({
         ...config,
         files: ["**/*.ts"]

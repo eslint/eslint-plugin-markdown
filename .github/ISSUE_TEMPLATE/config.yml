@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+    - name: 🐛 Report a Parsing Error
+      url: https://github.com/syntax-tree/mdast-util-from-markdown/issues/new/choose
+      about: File an issue with the parser that this plugin uses
+    - name: 🗣 Ask a Question, Discuss
+      url: https://github.com/eslint/markdown/discussions
+      about: Get help using this plugin
+    - name: Discord Server
+      url: https://eslint.org/chat
+      about: Talk with the team

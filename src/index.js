@@ -8,20 +8,26 @@
 //-----------------------------------------------------------------------------
 
 import { processor } from "./processor.js";
+import { MarkdownLanguage } from "./language/markdown-language.js";
+import recommendedRules from "./build/recommended-config.js";
+import rules from "./build/rules.js";
 
 //-----------------------------------------------------------------------------
 // Type Definitions
 //-----------------------------------------------------------------------------
 
 /** @typedef {import("eslint").Linter.RulesRecord} RulesRecord*/
+/** @typedef {import("eslint").Linter.Config} Config*/
 /** @typedef {import("eslint").ESLint.Plugin} Plugin */
+/** @typedef {import("eslint").Rule.RuleModule} RuleModule */
+/** @typedef {import("@eslint/core").Language} Language */
 
 //-----------------------------------------------------------------------------
 // Exports
 //-----------------------------------------------------------------------------
 
 /** @type {RulesRecord} */
-const rulesConfig = {
+const processorRulesConfig = {
 
     // The Markdown parser automatically trims trailing
     // newlines from code blocks.
@@ -44,7 +50,7 @@ const rulesConfig = {
     "unicode-bom": "off"
 };
 
-/** @type {Plugin} */
+/** @type {Plugin & { languages: Record<string,Language>}} */
 const plugin = {
     meta: {
         name: "@eslint/markdown",
@@ -53,6 +59,11 @@ const plugin = {
     processors: {
         markdown: processor
     },
+    languages: {
+        commonmark: new MarkdownLanguage({ mode: "commonmark" }),
+        gfm: new MarkdownLanguage({ mode: "gfm" })
+    },
+    rules,
     configs: {
         "recommended-legacy": {
             plugins: ["markdown"],
@@ -74,7 +85,7 @@ const plugin = {
                         }
                     },
                     rules: {
-                        ...rulesConfig
+                        ...processorRulesConfig
                     }
                 }
             ]
@@ -83,6 +94,20 @@ const plugin = {
 };
 
 plugin.configs.recommended = [
+
+    /** @type {Config & {language:string}} */
+    ({
+        name: "markdown/recommended",
+        files: ["**/*.md"],
+        language: "markdown/commonmark",
+        plugins: {
+            markdown: plugin
+        },
+        rules: /** @type {RulesRecord} */ (recommendedRules)
+    })
+];
+
+plugin.configs.processor = [
     {
         name: "markdown/recommended/plugin",
         plugins: {
@@ -110,7 +135,7 @@ plugin.configs.recommended = [
             }
         },
         rules: {
-            ...rulesConfig
+            ...processorRulesConfig
         }
     }
 ];

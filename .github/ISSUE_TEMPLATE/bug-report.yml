@@ -1,0 +1,81 @@
+name: "\U0001F41E Report a problem"
+description: "Report something that isn't working the way you expected."
+title: "Bug: (fill in)"
+labels:
+    - bug
+    - "repro:needed"
+body:
+    - type: markdown
+      attributes:
+          value: By opening an issue, you agree to abide by the [OpenJS Foundation Code of Conduct](https://eslint.org/conduct).
+    - type: textarea
+      attributes:
+          label: Environment
+          description: |
+              Please tell us about how you're running ESLint (Run `npx eslint --env-info`.)
+          value: |
+              ESLint version:
+              @eslint/markdown version:
+              Node version:
+              npm version:
+              Operating System:
+      validations:
+          required: true
+    - type: dropdown
+      attributes:
+          label: Which language are you using?
+          description: |
+              Just tell us which language mode you're using.
+          options:
+              - commonmark
+              - gfm
+      validations:
+          required: true
+    - type: textarea
+      attributes:
+          label: What did you do?
+          description: |
+              Please include a *minimal* reproduction case.
+          value: |
+              <details>
+              <summary>Configuration</summary>
+
+              ```
+              <!-- Paste your configuration here -->
+              ```
+              </details>
+
+              ```js
+              <!-- Paste your code here -->
+              ```
+      validations:
+          required: true
+    - type: textarea
+      attributes:
+          label: What did you expect to happen?
+      validations:
+          required: true
+    - type: textarea
+      attributes:
+          label: What actually happened?
+          description: |
+              Please copy-paste the actual ESLint output.
+      validations:
+          required: true
+    - type: input
+      attributes:
+          label: Link to Minimal Reproducible Example
+          description: "Link to a [StackBlitz](https://stackblitz.com) or GitHub repo with a minimal reproduction of the problem. **A minimal reproduction is required** so that others can help debug your issue. If a report is vague (e.g. just a generic error message) and has no reproduction, it may be auto-closed."
+          placeholder: "https://stackblitz.com/abcd1234"
+      validations:
+          required: true
+    - type: checkboxes
+      attributes:
+          label: Participation
+          options:
+              - label: I am willing to submit a pull request for this issue.
+                required: false
+    - type: textarea
+      attributes:
+          label: Additional comments
+          description: Is there anything else that's important for the team to know?

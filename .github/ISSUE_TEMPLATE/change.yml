@@ -1,0 +1,51 @@
+name: "\U0001F680 Request a change (not rule-related)"
+description: "Request a change that is not a bug fix, rule change, or new rule"
+title: "Change Request: (fill in)"
+labels:
+    - enhancement
+    - core
+body:
+    - type: markdown
+      attributes:
+          value: By opening an issue, you agree to abide by the [OpenJS Foundation Code of Conduct](https://eslint.org/conduct).
+    - type: textarea
+      attributes:
+          label: Environment
+          description: |
+              Please tell us about how you're running ESLint (Run `npx eslint --env-info`.)
+          value: |
+              ESLint version:
+              @eslint/markdown version:
+              Node version:
+              npm version:
+              Operating System:
+      validations:
+          required: true
+    - type: textarea
+      attributes:
+          label: What problem do you want to solve?
+          description: |
+              Please explain your use case in as much detail as possible.
+          placeholder: |
+              The Markdown plugin currently...
+      validations:
+          required: true
+    - type: textarea
+      attributes:
+          label: What do you think is the correct solution?
+          description: |
+              Please explain how you'd like to change the Markdown plugin to address the problem.
+          placeholder: |
+              I'd like the Markdown plugin to...
+      validations:
+          required: true
+    - type: checkboxes
+      attributes:
+          label: Participation
+          options:
+              - label: I am willing to submit a pull request for this change.
+                required: false
+    - type: textarea
+      attributes:
+          label: Additional comments
+          description: Is there anything else that's important for the team to know?
